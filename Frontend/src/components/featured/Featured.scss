@@ -1,9 +1,9 @@
 .featured {
   height: 600px;
-  display: flex;
-  justify-content: center;
   background-color: #013914;
   color: white;
+  display: flex;
+  justify-content: center;
 
   .container {
     width: 1400px;
@@ -36,6 +36,7 @@
           display: flex;
           align-items: center;
           gap: 10px;
+
           img {
             width: 20px;
             height: 20px;
