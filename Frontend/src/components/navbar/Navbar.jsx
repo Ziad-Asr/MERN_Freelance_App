@@ -51,7 +51,8 @@ const Navbar = () => {
                 <div className="options">
                   {currentUser?.isSeller && (
                     <>
-                      <span>Gigs</span> <span>Add new gig</span>
+                      <span>Gigs</span>
+                      <span>Add new gig</span>
                     </>
                   )}
                   <span>Orders</span>
