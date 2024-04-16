@@ -36,9 +36,6 @@ const Navbar = () => {
         </div>
         <div className="links">
           <Link to="/" className="link">
-            Liverr Business
-          </Link>
-          <Link to="/" className="link">
             Explore
           </Link>
           <Link to="/" className="link">
