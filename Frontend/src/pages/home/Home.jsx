@@ -54,7 +54,7 @@ function Home() {
               just project-based pricing.
             </p>
           </div>
-          <div className="item">
+          <div>
             <iframe
               width="560"
               height="315"
@@ -156,7 +156,7 @@ function Home() {
         <div className="container">
           <div className="item">
             <h1>
-              liverr <i>business</i>
+              Freelance <i>business</i>
             </h1>
             <h1>
               A business solution designed for <i>teams</i>
@@ -179,7 +179,7 @@ function Home() {
               <img src="./img/check.png" alt="" />
               Manage teamwork and boost productivity with one powerful workspace
             </div>
-            <button>Explore Liverr Business</button>
+            <button>Explore Freelance Business</button>
           </div>
           <div className="item">
             <img
@@ -190,8 +190,8 @@ function Home() {
         </div>
       </div>
       <Slide slidesToShow={4} arrowsScroll={4}>
-        {projects.map((card) => (
-          <ProjectCard key={card.id} card={card} />
+        {projects.map((projectCard) => (
+          <ProjectCard key={projectCard.id} card={projectCard} />
         ))}
       </Slide>
     </div>
