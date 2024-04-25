@@ -54,14 +54,14 @@ function Home() {
               just project-based pricing.
             </p>
           </div>
-          <div>
+          {/* <div>
             <iframe
               width="560"
               height="315"
               src="../../../public/videos/How Upwork Works - Learn about Upwork.mp4"
               allowfullscreen
             ></iframe>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="explore">

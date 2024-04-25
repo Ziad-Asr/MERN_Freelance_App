@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 import "./Navbar.scss";
-import { Link, useLocation } from "react-router-dom";
 
-const Navbar = () => {
+function Navbar() {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -19,69 +20,77 @@ const Navbar = () => {
     };
   }, []);
 
-  const currentUser = {
-    id: 1,
-    username: "ziad Elsayed",
-    isSeller: true,
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="container">
         <div className="logo">
-          <Link to="/" className="link">
-            <span>Freelance</span>
+          <Link className="link" to="/">
+            <span className="text">fiverr</span>
           </Link>
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <Link to="/" className="link">
-            Explore
-          </Link>
-          <Link to="/" className="link">
-            English
-          </Link>
-          <Link to="/" className="link">
-            Sign in
-          </Link>
-          {!currentUser?.isSeller && (
-            <Link to="/" className="link">
-              Become a seller
-            </Link>
-          )}
-          {currentUser && <button>Join</button>}
-
-          {currentUser && (
+          <span>Fiverr Business</span>
+          <span>Explore</span>
+          <span>English</span>
+          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img
-                src="https://miro.medium.com/v2/resize:fit:1200/1*odW0CyTVxMVt5s3yhjjOhw.png"
-                alt="user_image"
+                src={
+                  currentUser.img ||
+                  "https://miro.medium.com/v2/resize:fit:1200/1*odW0CyTVxMVt5s3yhjjOhw.png"
+                }
+                alt=""
               />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
-                  {currentUser?.isSeller && (
+                  {currentUser.isSeller && (
                     <>
-                      <Link to="/myGigs" className="link">
+                      <Link className="link" to="/mygigs">
                         Gigs
                       </Link>
-                      <Link to="/add" className="link">
-                        Add new gig
+                      <Link className="link" to="/add">
+                        Add New Gig
                       </Link>
                     </>
                   )}
-                  <Link to="/orders" className="link">
+                  <Link className="link" to="/orders">
                     Orders
                   </Link>
-                  <Link to="/messages" className="link">
+                  <Link className="link" to="/messages">
                     Messages
                   </Link>
-                  <Link to="/" className="link">
+                  <Link className="link" onClick={handleLogout}>
                     Logout
                   </Link>
                 </div>
               )}
             </div>
+          ) : (
+            <>
+              <Link to="/login" className="link">
+                Sign in
+              </Link>
+              <Link className="link" to="/register">
+                <button>Join</button>
+              </Link>
+            </>
           )}
         </div>
       </div>
@@ -122,6 +131,6 @@ const Navbar = () => {
       )}
     </div>
   );
-};
+}
 
 export default Navbar;
