@@ -35,6 +35,13 @@ app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/reviews", reviewRoute);
 
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong!";
+
+  return res.status(errorStatus).send(errorMessage);
+});
+
 app.listen(process.env.PORT, () => {
   connect();
   console.log(`Server is running on port ${process.env.PORT}!`);
