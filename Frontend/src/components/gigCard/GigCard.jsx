@@ -5,7 +5,7 @@ import newRequest from "../../utils/newRequest";
 import { useQuery } from "@tanstack/react-query";
 
 const GigCard = ({ item }) => {
-  const { isLoading, error, data, refetch } = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: [item.userId],
     queryFn: () =>
       newRequest.get(`/users/${item.userId}`).then((res) => {

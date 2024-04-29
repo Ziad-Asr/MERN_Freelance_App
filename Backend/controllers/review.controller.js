@@ -45,10 +45,3 @@ export const getGigReviews = async (req, res, next) => {
     next(err);
   }
 };
-
-export const deleteReview = async (req, res, next) => {
-  try {
-  } catch (err) {
-    next(err);
-  }
-};

@@ -3,7 +3,7 @@ import React from "react";
 import newRequest from "../../utils/newRequest";
 
 const Review = ({ review }) => {
-  const { isLoading, error, data, refetch } = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: [review.userId],
     queryFn: () =>
       newRequest.get(`/users/${review.userId}`).then((res) => {
