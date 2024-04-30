@@ -7,7 +7,7 @@ const ConversationSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-    },
+    }, // I made to be ease to get the conversation id from any conversation, (sellerID + buyerID)
     sellerId: {
       type: String,
       required: true,
@@ -19,15 +19,15 @@ const ConversationSchema = new Schema(
     readBySeller: {
       type: Boolean,
       required: true,
-    },
+    }, // changes if 1) the seller sent a message, 2) The seller made the message as read.
     readByBuyer: {
       type: Boolean,
       required: true,
-    },
+    }, // changes if 1) the buyer sent a message, 2) The buyer made the message as read.
     lastMessage: {
       type: String,
       required: false,
-    },
+    }, // every time a message is received or sent, I will change the last message of this conversation
   },
   {
     timestamps: true,
