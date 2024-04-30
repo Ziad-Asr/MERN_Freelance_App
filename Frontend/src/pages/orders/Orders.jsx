@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Orders.scss";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
@@ -8,6 +8,7 @@ const Orders = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const navigate = useNavigate();
+
   const { isLoading, error, data } = useQuery({
     queryKey: ["orders"],
     queryFn: () =>
@@ -27,12 +28,13 @@ const Orders = () => {
     } catch (err) {
       if (err.response.status === 404) {
         const res = await newRequest.post(`/conversations/`, {
-          to: currentUser.seller ? buyerId : sellerId,
+          to: currentUser.isSeller ? buyerId : sellerId,
         });
         navigate(`/message/${res.data.id}`);
       }
     }
   };
+
   return (
     <div className="orders">
       {isLoading ? (

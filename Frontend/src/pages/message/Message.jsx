@@ -29,10 +29,12 @@ const Message = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     mutation.mutate({
       conversationId: id,
       desc: e.target[0].value,
     });
+
     e.target[0].value = "";
   };
 
