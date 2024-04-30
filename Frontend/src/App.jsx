@@ -1,5 +1,5 @@
+import "./app.scss";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
@@ -13,9 +13,9 @@ import Orders from "./pages/orders/Orders";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
-
-import "./App.scss";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Pay from "./pages/pay/Pay";
+import Success from "./pages/success/Success";
 function App() {
   const queryClient = new QueryClient();
 
@@ -45,10 +45,6 @@ function App() {
           element: <Gigs />,
         },
         {
-          path: "/gig/:id",
-          element: <Gig />,
-        },
-        {
           path: "/myGigs",
           element: <MyGigs />,
         },
@@ -68,15 +64,27 @@ function App() {
           path: "/add",
           element: <Add />,
         },
+        {
+          path: "/gig/:id",
+          element: <Gig />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
+        },
       ],
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
     },
   ]);
 
