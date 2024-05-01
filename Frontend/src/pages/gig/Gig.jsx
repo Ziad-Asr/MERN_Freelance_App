@@ -17,6 +17,9 @@ function Gig() {
       }),
   });
 
+  console.log("data");
+  console.log(data)
+
   const userId = data?.userId;
 
   const {
