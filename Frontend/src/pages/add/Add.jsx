@@ -62,7 +62,7 @@ const Add = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     mutation.mutate(state);
-    // navigate("/mygigs")
+    navigate("/mygigs");
   };
 
   return (
@@ -77,9 +77,10 @@ const Add = () => {
               name="title"
               placeholder="e.g. I will do something I'm really good at"
               onChange={handleChange}
+              required
             />
             <label htmlFor="">Category</label>
-            <select name="cat" id="cat" onChange={handleChange}>
+            <select name="cat" id="cat" onChange={handleChange} required>
               <option value="design">Design</option>
               <option value="web">Web Development</option>
               <option value="animation">Animation</option>
@@ -91,12 +92,14 @@ const Add = () => {
                 <input
                   type="file"
                   onChange={(e) => setSingleFile(e.target.files[0])}
+                  required
                 />
                 <label htmlFor="">Upload Images</label>
                 <input
                   type="file"
                   multiple
                   onChange={(e) => setFiles(e.target.files)}
+                  required
                 />
               </div>
               <button onClick={handleUpload}>
@@ -121,6 +124,7 @@ const Add = () => {
               name="shortTitle"
               placeholder="e.g. One-page web design"
               onChange={handleChange}
+              required
             />
             <label htmlFor="">Short Description</label>
             <textarea
@@ -132,16 +136,22 @@ const Add = () => {
               rows="10"
             ></textarea>
             <label htmlFor="">Delivery Time (e.g. 3 days)</label>
-            <input type="number" name="deliveryTime" onChange={handleChange} />
+            <input
+              type="number"
+              name="deliveryTime"
+              onChange={handleChange}
+              required
+            />
             <label htmlFor="">Revision Number</label>
             <input
               type="number"
               name="revisionNumber"
               onChange={handleChange}
+              required
             />
             <label htmlFor="">Add Features</label>
             <form action="" className="add" onSubmit={handleFeature}>
-              <input type="text" placeholder="e.g. page design" />
+              <input type="text" placeholder="e.g. page design" required />
               <button type="submit">add</button>
             </form>
             <div className="addedFeatures">
@@ -159,7 +169,12 @@ const Add = () => {
               ))}
             </div>
             <label htmlFor="">Price</label>
-            <input type="number" onChange={handleChange} name="price" />
+            <input
+              type="number"
+              onChange={handleChange}
+              name="price"
+              required
+            />
           </div>
         </div>
       </div>
